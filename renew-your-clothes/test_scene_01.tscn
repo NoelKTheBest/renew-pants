@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1yibdcqgy8ae"]
+[gd_scene load_steps=5 format=3 uid="uid://d1yibdcqgy8ae"]
 
 [ext_resource type="Script" path="res://add_image.gd" id="1_popo1"]
 [ext_resource type="Texture2D" uid="uid://coqly5a1p1i7n" path="res://icon.svg" id="2_mq7rv"]
+[ext_resource type="Texture2D" uid="uid://bieovtd602xix" path="res://tattered_pants.png" id="3_6lb16"]
+[ext_resource type="Texture2D" uid="uid://ereidluiomwv" path="res://clothing patch.png" id="4_1bpho"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,5 +12,18 @@ script = ExtResource("1_popo1")
 width = 9
 texture = ExtResource("2_mq7rv")
 
+[node name="ClothingPatch" type="Sprite2D" parent="Node2D"]
+position = Vector2(26, 106)
+scale = Vector2(5, 5)
+texture = ExtResource("4_1bpho")
+
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 position = Vector2(252, 199)
+
+[node name="TatteredPants" type="Sprite2D" parent="Node2D"]
+position = Vector2(94, 200)
+scale = Vector2(4, 4)
+texture = ExtResource("3_6lb16")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(201, 79)

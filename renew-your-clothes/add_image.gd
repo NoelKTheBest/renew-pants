@@ -8,19 +8,19 @@ extends Node2D
 		queue_redraw()
 
 func _draw():
-	draw_texture(texture, Vector2())
+	#draw_texture(texture, Vector2())
+	pass
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var image: Image = texture.get_image()
-	print(image.get_pixelv(Vector2i(0, 0)).a)
-	print(image.get_pixelv(Vector2i(5, 5)).a)
+	#print(image.get_pixelv(Vector2i(0, 0)).a)
+	#print(image.get_pixelv(Vector2i(5, 5)).a)
 	var start_point = Vector2(10,75)
 	var end_point = Vector2(120, 25)
 	var m = (end_point.y - start_point.y) / (end_point.x - start_point.x)
 	var b = start_point.y - m * start_point.x
-	var range = end_point.x - start_point.x
 	
 	var array_main = PackedVector2Array([])
 	for i in range(start_point.x, end_point.x):
@@ -40,8 +40,25 @@ func _ready() -> void:
 	#image.flip_y()
 	var new_texture = ImageTexture.create_from_image(image)
 	$Sprite2D.texture = new_texture
+	
+	var pants : Image = $TatteredPants.texture.get_image()
+	var patch : Image = $ClothingPatch.texture.get_image()
+	patch.convert(Image.FORMAT_RGBA8)
+	print(pants.get_format())
+	print(patch.get_format())
+	var point = Vector2i(15, 3)
+	var patch_rect = patch.get_used_rect()
+	pants.blend_rect_mask(patch, pants, patch_rect, Vector2i(5, 15))
+	pants.set_pixelv(point, Color.RED)
+	pants.set_pixel(7, 15, Color.ORANGE_RED)
+	#pants.blend_rect(patch, Rect2i(0, 0, 4, 4), Vector2i(7, 15))
+	var new_pants = ImageTexture.create_from_image(pants)
+	$TatteredPants.texture = new_pants
+	
+	var source_image = Image.new()
+	source_image.load("res://icon.svg")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
