@@ -37,23 +37,22 @@ func _ready() -> void:
 				if image.get_pixelv(Vector2i(vector.x - i, vector.y)).a == 1:
 					image.set_pixel(vector.x - i, vector.y, Color.ORANGE)
 	
-	#image.flip_y()
+	
+	#########################################################################
 	var new_texture = ImageTexture.create_from_image(image)
 	$Sprite2D.texture = new_texture
 	
 	var pants : Image = $TatteredPants.texture.get_image()
 	var patch : Image = $ClothingPatch.texture.get_image()
 	patch.convert(Image.FORMAT_RGBA8)
-	print(pants.get_format())
-	print(patch.get_format())
-	var point = Vector2i(15, 3)
+	var temp_img : Image = Image.create_empty(5, 5, false, Image.FORMAT_RGBA8)
 	var patch_rect = patch.get_used_rect()
-	pants.blend_rect_mask(patch, pants, patch_rect, Vector2i(5, 15))
-	pants.set_pixelv(point, Color.RED)
-	pants.set_pixel(7, 15, Color.ORANGE_RED)
-	#pants.blend_rect(patch, Rect2i(0, 0, 4, 4), Vector2i(7, 15))
+	temp_img.blit_rect(pants, Rect2i(5, 15, 5, 5), Vector2i(0, 0))
+	pants.blit_rect_mask(patch, temp_img, patch_rect, Vector2i(5, 15))
+	#pants.blit_rect(patch, patch_rect, Vector2i(5, 15))
 	var new_pants = ImageTexture.create_from_image(pants)
 	$TatteredPants.texture = new_pants
+	$Sprite2D2.texture = ImageTexture.create_from_image(temp_img)
 	
 	var source_image = Image.new()
 	source_image.load("res://icon.svg")

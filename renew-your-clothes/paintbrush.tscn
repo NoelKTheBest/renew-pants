@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8wfy2ulaigeu"]
+
+[ext_resource type="Texture2D" uid="uid://qryu8ieo32c7" path="res://paintbrush-Sheet.png" id="1_mg2q6"]
+[ext_resource type="Script" path="res://paintbrush.gd" id="2_sqhtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hagwt"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmbek"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn78m"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuhee"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xybgx"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lav7i"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ve31"]
+atlas = ExtResource("1_mg2q6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0na70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hagwt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmbek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn78m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuhee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xybgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lav7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ve31")
+}],
+"loop": true,
+"name": &"swipe",
+"speed": 11.0
+}]
+
+[node name="paintbrush" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0na70")
+animation = &"swipe"
+frame_progress = 0.439798
+script = ExtResource("2_sqhtj")

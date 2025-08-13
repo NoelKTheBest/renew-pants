@@ -21,9 +21,13 @@ texture = ExtResource("4_1bpho")
 position = Vector2(252, 199)
 
 [node name="TatteredPants" type="Sprite2D" parent="Node2D"]
-position = Vector2(94, 200)
+position = Vector2(102, 204)
 scale = Vector2(4, 4)
 texture = ExtResource("3_6lb16")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
 position = Vector2(201, 79)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(269.38, 79)
