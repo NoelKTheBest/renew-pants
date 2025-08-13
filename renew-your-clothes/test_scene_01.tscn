@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1yibdcqgy8ae"]
+[gd_scene load_steps=9 format=3 uid="uid://d1yibdcqgy8ae"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_lqeuq"]
+[ext_resource type="PackedScene" uid="uid://c8wfy2ulaigeu" path="res://paintbrush.tscn" id="1_po3dl"]
 [ext_resource type="Script" path="res://add_image.gd" id="1_popo1"]
 [ext_resource type="Texture2D" uid="uid://coqly5a1p1i7n" path="res://icon.svg" id="2_mq7rv"]
 [ext_resource type="Texture2D" uid="uid://bieovtd602xix" path="res://tattered_pants.png" id="3_6lb16"]
 [ext_resource type="Texture2D" uid="uid://ereidluiomwv" path="res://clothing patch.png" id="4_1bpho"]
+[ext_resource type="Script" path="res://canvas.gd" id="6_g0m38"]
+[ext_resource type="PackedScene" uid="uid://de7g1duyubpw7" path="res://palette.tscn" id="8_fetnb"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lqeuq")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_popo1")
@@ -31,3 +36,16 @@ scale = Vector2(5, 5)
 
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
 position = Vector2(269.38, 79)
+
+[node name="Canvas" type="Node2D" parent="."]
+script = ExtResource("6_g0m38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Canvas"]
+
+[node name="ClothingBench" type="Sprite2D" parent="Canvas"]
+
+[node name="paintbrush" parent="." instance=ExtResource("1_po3dl")]
+position = Vector2(98, 102)
+
+[node name="palette" parent="." instance=ExtResource("8_fetnb")]
+position = Vector2(376, 163)
