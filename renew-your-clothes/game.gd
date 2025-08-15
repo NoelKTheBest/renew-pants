@@ -1,7 +1,7 @@
 extends Node2D
 
-
-@onready var paintbrush = $paintbrush
+@onready var canvas = $Canvas
+@onready var paintbrush = $Canvas/paintbrush
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +15,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("swipe"):
 		paintbrush.swipe()
+		canvas.paint_clothes(paintbrush.is_horizontal)
+		
 	
 	var y_direction = Input.get_axis("ui_up", "ui_down")
 	var x_direction = Input.get_axis("ui_left", "ui_right")
 	paintbrush.move_local_y(y_direction * 1.75)
 	paintbrush.move_local_x(x_direction * 1.75)
+	
 	#print("x: " + str(x_direction) + "; y: " + str(y_direction))

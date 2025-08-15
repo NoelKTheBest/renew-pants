@@ -49,7 +49,6 @@ func _ready() -> void:
 	var patch_rect = patch.get_used_rect()
 	temp_img.blit_rect(pants, Rect2i(5, 15, 5, 5), Vector2i(0, 0))
 	pants.blit_rect_mask(patch, temp_img, patch_rect, Vector2i(5, 15))
-	#pants.blit_rect(patch, patch_rect, Vector2i(5, 15))
 	var new_pants = ImageTexture.create_from_image(pants)
 	$TatteredPants.texture = new_pants
 	$Sprite2D2.texture = ImageTexture.create_from_image(temp_img)
