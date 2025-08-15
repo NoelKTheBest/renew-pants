@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1yibdcqgy8ae"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_n5i33"]
+[ext_resource type="Texture2D" uid="uid://3lyml8latkoi" path="res://workbench.png" id="2_7ln7d"]
+[ext_resource type="Script" path="res://canvas.gd" id="3_bdtk3"]
+[ext_resource type="Texture2D" uid="uid://vgduyd0sokkq" path="res://white square.png" id="4_b7j3a"]
+[ext_resource type="Texture2D" uid="uid://bieovtd602xix" path="res://tattered_pants.png" id="5_lc2pw"]
+[ext_resource type="PackedScene" uid="uid://c8wfy2ulaigeu" path="res://paintbrush.tscn" id="6_1lvcp"]
+[ext_resource type="Texture2D" uid="uid://ereidluiomwv" path="res://clothing patch.png" id="7_djkay"]
+[ext_resource type="PackedScene" uid="uid://de7g1duyubpw7" path="res://palette.tscn" id="8_ftkji"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_n5i33")
+
+[node name="Workbench" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.490196)
+position = Vector2(246, 185)
+scale = Vector2(0.77, 0.77)
+texture = ExtResource("2_7ln7d")
+
+[node name="Canvas" type="Node2D" parent="."]
+position = Vector2(200, 200)
+script = ExtResource("3_bdtk3")
+width = 2
+stroke_length = 5
+rand_x_shift = 5
+rand_y_shift = 5
+
+[node name="BG" type="Sprite2D" parent="Canvas"]
+modulate = Color(0.87, 0.87, 0.87, 1)
+scale = Vector2(8.84, 8.84)
+texture = ExtResource("4_b7j3a")
+metadata/_edit_group_ = true
+
+[node name="ClothingBench" type="Sprite2D" parent="Canvas"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_lc2pw")
+
+[node name="paintbrush" parent="Canvas" instance=ExtResource("6_1lvcp")]
+position = Vector2(-31.28, -30)
+
+[node name="ClothingPatch" type="Sprite2D" parent="Canvas"]
+scale = Vector2(5, 5)
+texture = ExtResource("7_djkay")
+offset = Vector2(-2.5, 0)
+
+[node name="palette" parent="." instance=ExtResource("8_ftkji")]
+position = Vector2(317.72, 161)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 336.0
+offset_top = 219.0
+offset_right = 376.0
+offset_bottom = 259.0

@@ -11,59 +11,115 @@ position = Vector2(38.5, 19.5)
 scale = Vector2(4.8125, 2.4375)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D" type="Sprite2D" parent="BG"]
+[node name="RoyalBlue" type="Sprite2D" parent="BG"]
 modulate = Color(0.254902, 0.411765, 0.882353, 1)
 position = Vector2(-5.92208, -3.89744)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Button" type="Button" parent="BG/Sprite2D"]
+[node name="royalblue" type="Button" parent="BG/RoyalBlue"]
 visibility_layer = 0
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="BG"]
+[node name="OrangeRed" type="Sprite2D" parent="BG"]
 modulate = Color(1, 0.270588, 0, 1)
 position = Vector2(-1.97403, -3.89744)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D3" type="Sprite2D" parent="BG"]
+[node name="orangered" type="Button" parent="BG/OrangeRed"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DarkGreen" type="Sprite2D" parent="BG"]
 modulate = Color(0, 0.392157, 0, 1)
 position = Vector2(1.97403, -3.89744)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D4" type="Sprite2D" parent="BG"]
+[node name="darkgreen" type="Button" parent="BG/DarkGreen"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DarkRed" type="Sprite2D" parent="BG"]
 modulate = Color(0.545098, 0, 0, 1)
 position = Vector2(5.92208, -3.89744)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D5" type="Sprite2D" parent="BG"]
+[node name="darkred" type="Button" parent="BG/DarkRed"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Gold" type="Sprite2D" parent="BG"]
 modulate = Color(1, 0.843137, 0, 1)
 position = Vector2(5.92208, 3.89743)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D6" type="Sprite2D" parent="BG"]
+[node name="gold" type="Button" parent="BG/Gold"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="HotPink" type="Sprite2D" parent="BG"]
 modulate = Color(1, 0.411765, 0.705882, 1)
 position = Vector2(1.97403, 3.89743)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D7" type="Sprite2D" parent="BG"]
+[node name="hotpink" type="Button" parent="BG/HotPink"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Indigo" type="Sprite2D" parent="BG"]
 modulate = Color(0.294118, 0, 0.509804, 1)
 position = Vector2(-1.97403, 3.89743)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[node name="Sprite2D8" type="Sprite2D" parent="BG"]
+[node name="indigo" type="Button" parent="BG/Indigo"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Black" type="Sprite2D" parent="BG"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-5.92208, 3.89743)
 scale = Vector2(0.207792, 0.410256)
 texture = ExtResource("2_fsg70")
 
-[connection signal="pressed" from="BG/Sprite2D/Button" to="." method="_on_button_pressed"]
+[node name="black" type="Button" parent="BG/Black"]
+visibility_layer = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="BG/RoyalBlue/royalblue" to="." method="_on_royalblue_pressed"]
+[connection signal="pressed" from="BG/OrangeRed/orangered" to="." method="_on_orangered_pressed"]
+[connection signal="pressed" from="BG/DarkGreen/darkgreen" to="." method="_on_darkgreen_pressed"]
+[connection signal="pressed" from="BG/DarkRed/darkred" to="." method="_on_darkred_pressed"]
+[connection signal="pressed" from="BG/Gold/gold" to="." method="_on_gold_pressed"]
+[connection signal="pressed" from="BG/HotPink/hotpink" to="." method="_on_hotpink_pressed"]
+[connection signal="pressed" from="BG/Indigo/indigo" to="." method="_on_indigo_pressed"]
+[connection signal="pressed" from="BG/Black/black" to="." method="_on_black_pressed"]

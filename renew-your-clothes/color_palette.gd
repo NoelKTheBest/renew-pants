@@ -1,15 +1,35 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var current_color : Color
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_royalblue_pressed() -> void:
+	current_color = Color.ROYAL_BLUE
 
 
-func _on_button_pressed() -> void:
-	print("i was pressed :>")
+func _on_orangered_pressed() -> void:
+	current_color = Color.ORANGE_RED
+
+
+func _on_darkgreen_pressed() -> void:
+	current_color = Color.DARK_GREEN
+
+
+func _on_darkred_pressed() -> void:
+	current_color = Color.DARK_RED
+
+
+func _on_gold_pressed() -> void:
+	current_color = Color.GOLD
+
+
+func _on_hotpink_pressed() -> void:
+	current_color = Color.HOT_PINK
+
+
+func _on_indigo_pressed() -> void:
+	current_color = Color.INDIGO
+
+
+func _on_black_pressed() -> void:
+	current_color = Color.BLACK
