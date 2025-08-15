@@ -6,15 +6,34 @@ extends Node2D
 @onready var palette = $palette
 @onready var color_indicator = $ColorRect
 
+var shirts = preload("res://dirty_white_shirt.png")
+var pants = preload("res://tattered_pants.png")
+var is_shirt = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$RichTextLabel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	canvas.paint_color = palette.current_color
 	color_indicator.color = palette.current_color
+	
+	if Input.is_action_just_pressed("change_clothes"):
+		print("i was pressed :>")
+		if !is_shirt:
+			if canvas.updated_shirt_texture:
+				$Canvas/ClothingBench.texture = canvas.updated_shirt_texture
+			else:
+				$Canvas/ClothingBench.texture = shirts
+			is_shirt = !(is_shirt)
+		elif is_shirt:
+			if canvas.updated_pants_texture:
+				$Canvas/ClothingBench.texture = canvas.updated_pants_texture
+			else:
+				$Canvas/ClothingBench.texture = pants
+			is_shirt = !(is_shirt)
 	
 	if Input.is_action_just_pressed("change_tool"):
 		if canvas.current_tool == "paint": canvas.current_tool = "patch"
@@ -43,3 +62,27 @@ func _process(delta: float) -> void:
 		patch_tool.move_local_x(x_direction * 1.75)
 	
 	#print("x: " + str(x_direction) + "; y: " + str(y_direction))
+	
+	if Input.is_action_just_pressed("save"):
+		if is_shirt:
+			canvas.updated_shirt_texture = $Canvas/ClothingBench.texture
+		else:
+			canvas.updated_pants_texture = $Canvas/ClothingBench.texture
+		
+		$RichTextLabel.text = "SAVE"
+		$RichTextLabel.visible = true
+		$Timer.start()
+	
+	if Input.is_action_just_pressed("reset_textures"):
+		canvas.updated_shirt_texture = null
+		canvas.updated_pants_texture = null
+		$RichTextLabel.text = "RESET"
+		$RichTextLabel.visible = true
+		$Timer.start()
+	
+	if Input.is_action_just_pressed("quit_game"):
+		get_tree().quit()
+
+
+func _on_timer_timeout() -> void:
+	$RichTextLabel.visible = false

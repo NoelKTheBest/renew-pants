@@ -52,3 +52,16 @@ offset_left = 336.0
 offset_top = 219.0
 offset_right = 376.0
 offset_bottom = 259.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 214.0
+offset_top = 301.0
+offset_right = 271.0
+offset_bottom = 341.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

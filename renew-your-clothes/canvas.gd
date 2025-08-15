@@ -16,6 +16,9 @@ var canvas_position
 var in_range_x
 var in_range_y
 
+var updated_shirt_texture : Texture2D
+var updated_pants_texture : Texture2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	brush.position = Vector2i.ZERO
@@ -67,6 +70,7 @@ func _process(delta: float) -> void:
 			new_y = ((patch_tool.position.y + 50)/ 32) * 10
 			canvas_position = Vector2i(new_x, new_y)
 			#print(canvas_position)
+	
 
 
 func paint_clothes(brush_is_horizontal: bool) -> void:
