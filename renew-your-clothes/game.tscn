@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1yibdcqgy8ae"]
+[gd_scene load_steps=10 format=3 uid="uid://d1yibdcqgy8ae"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_n5i33"]
 [ext_resource type="Texture2D" uid="uid://3lyml8latkoi" path="res://workbench.png" id="2_7ln7d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8wfy2ulaigeu" path="res://paintbrush.tscn" id="6_1lvcp"]
 [ext_resource type="Texture2D" uid="uid://ereidluiomwv" path="res://clothing patch.png" id="7_djkay"]
 [ext_resource type="PackedScene" uid="uid://de7g1duyubpw7" path="res://palette.tscn" id="8_ftkji"]
+[ext_resource type="AudioStream" uid="uid://cbdy4jsxakwob" path="res://Late Night Radio.mp3" id="9_ki654"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_n5i33")
@@ -64,4 +65,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ki654")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

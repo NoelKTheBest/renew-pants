@@ -6,13 +6,18 @@ extends Node2D
 @onready var palette = $palette
 @onready var color_indicator = $ColorRect
 
+var song1 = preload("res://Late Night Radio.mp3")
+var song2 = preload("res://Kalimba Relaxation Music.mp3")
 var shirts = preload("res://dirty_white_shirt.png")
 var pants = preload("res://tattered_pants.png")
 var is_shirt = false
+var music_toggle = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$RichTextLabel.visible = false
+	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -86,3 +91,13 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	$RichTextLabel.visible = false
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	if music_toggle == 0:
+		$AudioStreamPlayer2D.stream = song2
+		$AudioStreamPlayer2D.play()
+	elif music_toggle == 1:
+		$AudioStreamPlayer2D.stream = song1
+		$AudioStreamPlayer2D.play()
+	music_toggle = 1 - music_toggle
