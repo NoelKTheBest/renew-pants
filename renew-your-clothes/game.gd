@@ -6,12 +6,11 @@ extends Node2D
 @onready var palette = $palette
 @onready var color_indicator = $ColorRect
 
-var song1 = preload("res://Late Night Radio.mp3")
-var song2 = preload("res://Kalimba Relaxation Music.mp3")
+var brush_sfx = preload("res://Brush_1.mp3")
+var patch_sfx = preload("res://Brush_3.mp3")
 var shirts = preload("res://dirty_white_shirt.png")
 var pants = preload("res://tattered_pants.png")
 var is_shirt = false
-var music_toggle = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +25,6 @@ func _process(delta: float) -> void:
 	color_indicator.color = palette.current_color
 	
 	if Input.is_action_just_pressed("change_clothes"):
-		print("i was pressed :>")
 		if !is_shirt:
 			if canvas.updated_shirt_texture:
 				$Canvas/ClothingBench.texture = canvas.updated_shirt_texture
@@ -52,6 +50,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("tool_action"):
 			paintbrush.swipe()
 			canvas.paint_clothes(paintbrush.is_horizontal)
+			$"SFX Player".stream = brush_sfx
+			$"SFX Player".play()
 		
 		var y_direction = Input.get_axis("ui_up", "ui_down")
 		var x_direction = Input.get_axis("ui_left", "ui_right")
@@ -60,6 +60,8 @@ func _process(delta: float) -> void:
 	elif canvas.current_tool == "patch":
 		if Input.is_action_just_pressed("tool_action"):
 			canvas.patch_clothes()
+			$"SFX Player".stream = patch_sfx
+			$"SFX Player".play()
 		
 		var y_direction = Input.get_axis("ui_up", "ui_down")
 		var x_direction = Input.get_axis("ui_left", "ui_right")
@@ -94,10 +96,4 @@ func _on_timer_timeout() -> void:
 
 
 func _on_audio_stream_player_2d_finished() -> void:
-	if music_toggle == 0:
-		$AudioStreamPlayer2D.stream = song2
-		$AudioStreamPlayer2D.play()
-	elif music_toggle == 1:
-		$AudioStreamPlayer2D.stream = song1
-		$AudioStreamPlayer2D.play()
-	music_toggle = 1 - music_toggle
+	$AudioStreamPlayer2D.play(10.22)

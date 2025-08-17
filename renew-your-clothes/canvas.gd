@@ -80,12 +80,14 @@ func paint_clothes(brush_is_horizontal: bool) -> void:
 	
 	var rand_x
 	var rand_y
+	var start_point
 	if brush_is_horizontal:
 		rand_y = randi_range(-rand_y_shift, rand_y_shift)
+		start_point = canvas_position + Vector2i(0, y_shift)
 	else:
 		rand_x = randi_range(-rand_x_shift, rand_x_shift)
+		start_point = canvas_position + Vector2i(x_shift, 0)
 	
-	var start_point = canvas_position + Vector2i(x_shift, y_shift)
 	var end_shift_vector
 	if brush_is_horizontal:
 		end_shift_vector = Vector2i(stroke_length, rand_y)
@@ -98,6 +100,10 @@ func paint_clothes(brush_is_horizontal: bool) -> void:
 	
 	#print("start: " + str(start_point))
 	#print("end: " + str(end_point))
+	if end_point.x == start_point.x:
+		end_point.x = end_point.x + 1
+	elif end_point.x < start_point.x:
+		end_point.x = start_point.x + 1
 	var m = (end_point.y - start_point.y) / (end_point.x - start_point.x)
 	var b = start_point.y - m * start_point.x
 	
